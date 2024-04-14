@@ -5,66 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expansão Digital</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #ADD8E6, #FFFFFF, #ADD8E6);
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .box {
-            border: 2px solid #000;
-            background-color: #fff;
-            padding: 20px;
-            margin: 10px;
-            flex-basis: calc(50% - 40px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: left;
-            border-radius: 8px;
-        }
-        .box:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        .image-placeholder {
-            width: 100%;
-            height: 200px;
-            background-color: #ddd;
-            margin-bottom: 20px;
-            flex-shrink: 0;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-            overflow: hidden;
-            background-size: cover;
-            background-position: center;
-        }
-        .text-content {
-            flex-grow: 1;
-            padding: 0 20px;
-        }
-        h1 {
-            text-align: center;
-            color: #000;
-        }
-        h3 {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        @media screen and (max-width: 600px) {
-            .box {
-                flex-basis: calc(100% - 40px);
-            }
-        }
+      body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ADD8E6, #FFFFFF, #ADD8E6);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.box {
+    border: 2px solid #000;
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    flex-basis: calc(50% - 40px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    border-radius: 8px;
+}
+
+.box:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #ddd;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+.text-content {
+    flex-grow: 1;
+    padding: 0 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #000;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Additional styles for the course details */
+.course-details {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin: 20px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .box {
+        flex-basis: calc(100% - 40px);
+    }
+}
+
     </style>
 </head>
 <body>
@@ -72,49 +91,49 @@
 <h1>Expansão Digital</h1>
 
 <div class="container">
+    <!-- Card for Lógica de Programação e Desenvolvimento Web com IA -->
     <div class="box">
-        <div class="image-placeholder" style="background-image: url('https://www.coopersystem.com.br/wp-content/uploads/2023/09/6-mitos-e-verdades-sobre-cloud-computing.jpg');"></div>
+        <div class="image-placeholder" style="background-image: url('https://metodoprogramar.com.br/wp-content/uploads/2023/06/Como-iniciar-no-Desenvolvimento-Web-O-que-voce-deve-estudar.png');"></div>
         <div class="text-content">
-            <h3>Cloud Computing</h3>
+            <h3>Lógica de Programação e Desenvolvimento Web com IA</h3>
             <ol>
-                <li>Introdução ao Cloud Computing
+                <li>Lógica de Programação
                     <ul>
-                        <li>Conceitos básicos de Cloud Computing</li>
-                        <li>Modelos de serviço: IaaS, PaaS, SaaS</li>
-                        <li>Vantagens e desvantagens da computação em nuvem</li>
-                        <li>Principais provedores de serviços de nuvem</li>
+                        <li>Conceitos Fundamentais</li>
+                        <li>Importância da lógica na construção de algoritmos</li>
+                        <li>Algoritmos e sua representação</li>
+                        <li>Variáveis e tipos de dados</li>
+                        <li>Estruturas de Controle de Fluxo</li>
+                        <li>Estruturas de Dados Básicas</li>
+                        <li>Funções e Modularização</li>
+                        <li>Algoritmos de Ordenação e Busca</li>
                     </ul>
                 </li>
-                <li>Plataformas de Cloud Existentes
+                <li>Desenvolvimento Web
                     <ul>
-                        <li>Visão geral dos principais provedores de nuvem (ex: AWS, Microsoft Azure, Google Cloud Platform)</li>
-                        <li>Comparação entre plataformas: características, preços, serviços oferecidos</li>
-                        <li>Demonstração prática de como acessar e navegar nas plataformas de nuvem mais populares</li>
+                        <li>Conceitos Fundamentais</li>
+                        <li>Introdução ao HTML5</li>
+                        <li>Estrutura básica de um documento HTML</li>
+                        <li>Uso de tags HTML para marcação de conteúdo</li>
+                        <li>Links, imagens e listas em HTML</li>
+                        <li>Estilização com CSS</li>
+                        <li>Responsividade e Layouts Flexíveis</li>
+                        <li>Interação com JavaScript</li>
                     </ul>
                 </li>
-                <li>Processamento de Dados em Nuvem
+                <li>Desenvolvimento Web com IA
                     <ul>
-                        <li>Introdução ao processamento de dados em nuvem</li>
-                        <li>Configuração e uso básico de ferramentas de computação em nuvem</li>
-                        <li>Escalabilidade e elasticidade em ambientes de computação em nuvem</li>
-                    </ul>
-                </li>
-                <li>Segurança e Governança na Nuvem
-                    <ul>
-                        <li>Desafios de segurança em ambientes de nuvem</li>
-                        <li>Controles de acesso e gerenciamento de identidade na nuvem</li>
-                    </ul>
-                </li>
-                <li>Aplicações Práticas
-                    <ul>
-                        <li>Estudos de caso de empresas que utilizam a nuvem para diferentes propósitos (armazenamento, processamento, análise de dados, etc.)</li>
-                        <li>Exemplos práticos de como integrar serviços de nuvem em projetos reais</li>
-                        <li>Discussão sobre tendências futuras e possíveis avanços em Cloud Computing</li>
+                        <li>Engenharia de Prompt</li>
+                        <li>Conceitos básicos de IA e Machine Learning</li>
+                        <li>Otimização de Websites com IA</li>
+                        <li>Aplicações e Projetos Práticos</li>
                     </ul>
                 </li>
             </ol>
         </div>
     </div>
+
+
 
     <div class="box">
         <div class="image-placeholder" style="background-image: url('https://t.ctcdn.com.br/MAiDMlUqZs4khOpe-vzzsaE1tTk=/640x360/smart/i743626.jpeg');"></div>
@@ -166,6 +185,57 @@
             </ol>
         </div>
     </div>
+
+
+
+
+    <!-- Card for Cloud Computing -->
+    <div class="box">
+        <div class="image-placeholder" style="background-image: url('https://www.coopersystem.com.br/wp-content/uploads/2023/09/6-mitos-e-verdades-sobre-cloud-computing.jpg');"></div>
+        <div class="text-content">
+            <h3>Cloud Computing</h3>
+            <ol>
+                <li>Introdução ao Cloud Computing
+                    <ul>
+                        <li>Conceitos básicos de Cloud Computing</li>
+                        <li>Modelos de serviço: IaaS, PaaS, SaaS</li>
+                        <li>Vantagens e desvantagens da computação em nuvem</li>
+                        <li>Principais provedores de serviços de nuvem</li>
+                    </ul>
+                </li>
+                <li>Plataformas de Cloud Existentes
+                    <ul>
+                        <li>Visão geral dos principais provedores de nuvem (ex: AWS, Microsoft Azure, Google Cloud Platform)</li>
+                        <li>Comparação entre plataformas: características, preços, serviços oferecidos</li>
+                        <li>Demonstração prática de como acessar e navegar nas plataformas de nuvem mais populares</li>
+                    </ul>
+                </li>
+                <li>Processamento de Dados em Nuvem
+                    <ul>
+                        <li>Introdução ao processamento de dados em nuvem</li>
+                        <li>Configuração e uso básico de ferramentas de computação em nuvem</li>
+                        <li>Escalabilidade e elasticidade em ambientes de computação em nuvem</li>
+                    </ul>
+                </li>
+                <li>Segurança e Governança na Nuvem
+                    <ul>
+                        <li>Desafios de segurança em ambientes de nuvem</li>
+                        <li>Controles de acesso e gerenciamento de identidade na nuvem</li>
+                    </ul>
+                </li>
+                <li>Aplicações Práticas
+                    <ul>
+                        <li>Estudos de caso de empresas que utilizam a nuvem para diferentes propósitos (armazenamento, processamento, análise de dados, etc.)</li>
+                        <li>Exemplos práticos de como integrar serviços de nuvem em projetos reais</li>
+                        <li>Discussão sobre tendências futuras e possíveis avanços em Cloud Computing</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+
+    
 
     <div class="box">
         <div class="image-placeholder" style="background-image: url('https://www.interop.com.br/wp-content/uploads/2019/06/IOT.jpg');"></div>
@@ -219,47 +289,10 @@
         </div>
     </div>
 
-    <div class="box">
-        <div class="image-placeholder" style="background-image: url('https://s4.static.brasilescola.uol.com.br/monografias/2020/08/moedas.jpg');"></div>
-        <div class="text-content">
-            <h3>Nova Economia, Moedas Virtuais e Criptomoedas</h3>
-            <ol>
-                <li>Introdução à Nova Economia e Moedas Virtuais
-                    <ul>
-                        <li>Definição de Nova Economia e seu impacto nas transações financeiras</li>
-                        <li>História e evolução das moedas virtuais e criptomoedas</li>
-                        <li>Vantagens e desafios da adoção de moedas virtuais</li>
-                    </ul>
-                </li>
-                <li>Conceitos Fundamentais de Criptomoedas
-                    <ul>
-                        <li>O que são criptomoedas e como funcionam</li>
-                        <li>Tecnologia Blockchain: princípios básicos e características</li>
-                        <li>Tipos de criptomoedas: Bitcoin, Ethereum, Ripple, etc.</li>
-                    </ul>
-                </li>
-                <li>Uso e Aplicações de Criptomoedas
-                    <ul>
-                        <li>Transações e pagamentos com criptomoedas</li>
-                        <li>Casos de uso de blockchain além das criptomoedas: contratos inteligentes, descentralização, entre outros</li>
-                    </ul>
-                </li>
-                <li>Plataformas e Ferramentas de Criptomoedas
-                    <ul>
-                        <li>Carteiras de criptomoedas: tipos, características e segurança</li>
-                    </ul>
-                </li>
-                <li>Segurança em Criptomoedas
-                    <ul>
-                        <li>Princípios de segurança em criptomoedas: chaves privadas, carteiras seguras, autenticação de dois fatores</li>
-                        <li>Riscos e ameaças comuns em transações com criptomoedas: phishing, malware, fraudes</li>
-                        <li>Melhores práticas para proteger seus ativos digitais</li>
-                    </ul>
-                </li>
-            </ol>
-        </div>
-    </div>
 
+
+
+    
     <div class="box">
         <div class="image-placeholder" style="background-image: url('https://infoportugal.pt/wp-content/uploads/2023/03/Realidade_Virtual_e_Aumentada_By_InfoPortugal.png');"></div>
         <div class="text-content">
@@ -304,6 +337,50 @@
             </ol>
         </div>
     </div>
+
+
+
+    <div class="box">
+        <div class="image-placeholder" style="background-image: url('https://s4.static.brasilescola.uol.com.br/monografias/2020/08/moedas.jpg');"></div>
+        <div class="text-content">
+            <h3>Nova Economia, Moedas Virtuais e Criptomoedas</h3>
+            <ol>
+                <li>Introdução à Nova Economia e Moedas Virtuais
+                    <ul>
+                        <li>Definição de Nova Economia e seu impacto nas transações financeiras</li>
+                        <li>História e evolução das moedas virtuais e criptomoedas</li>
+                        <li>Vantagens e desafios da adoção de moedas virtuais</li>
+                    </ul>
+                </li>
+                <li>Conceitos Fundamentais de Criptomoedas
+                    <ul>
+                        <li>O que são criptomoedas e como funcionam</li>
+                        <li>Tecnologia Blockchain: princípios básicos e características</li>
+                        <li>Tipos de criptomoedas: Bitcoin, Ethereum, Ripple, etc.</li>
+                    </ul>
+                </li>
+                <li>Uso e Aplicações de Criptomoedas
+                    <ul>
+                        <li>Transações e pagamentos com criptomoedas</li>
+                        <li>Casos de uso de blockchain além das criptomoedas: contratos inteligentes, descentralização, entre outros</li>
+                    </ul>
+                </li>
+                <li>Plataformas e Ferramentas de Criptomoedas
+                    <ul>
+                        <li>Carteiras de criptomoedas: tipos, características e segurança</li>
+                    </ul>
+                </li>
+                <li>Segurança em Criptomoedas
+                    <ul>
+                        <li>Princípios de segurança em criptomoedas: chaves privadas, carteiras seguras, autenticação de dois fatores</li>
+                        <li>Riscos e ameaças comuns em transações com criptomoedas: phishing, malware, fraudes</li>
+                        <li>Melhores práticas para proteger seus ativos digitais</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
 </div>
 
 </body>
