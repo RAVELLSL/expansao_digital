@@ -1,99 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expansão Digital</title>
     <style>
       body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #ADD8E6, #FFFFFF, #ADD8E6);
-    margin: 0;
-    padding: 0;
-}
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #ADD8E6, #FFFFFF, #ADD8E6);
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+        color: #000;
+      }
 
-.container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+      header {
+        text-align: center;
+        padding: 40px 20px;
+      }
 
-.box {
-    border: 2px solid #000;
-    background-color: #fff;
-    padding: 20px;
-    margin: 10px;
-    flex-basis: calc(50% - 40px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: left;
-    border-radius: 8px;
-}
+      header h1 {
+        margin: 0;
+        font-size: 2em;
+        color: #000;
+      }
 
-.box:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
+      main {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+        grid-gap: 20px; /* Espaçamento entre os cards */
+      }
 
-.image-placeholder {
-    width: 100%;
-    height: 200px;
-    background-color: #ddd;
-    margin-bottom: 20px;
-    flex-shrink: 0;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-}
+      .box {
+        border: 1px solid #ccc;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        transition: box-shadow 0.3s ease;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+      }
 
-.text-content {
-    flex-grow: 1;
-    padding: 0 20px;
-}
+      .box:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
 
-h1 {
-    text-align: center;
-    color: #000;
-}
+      .box img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px 8px 0 0;
+        margin-bottom: 20px;
+      }
 
-h3 {
-    text-align: center;
-    margin-bottom: 10px;
-}
+      .text-content {
+        width: 100%;
+      }
 
-/* Additional styles for the course details */
-.course-details {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    margin: 20px;
-}
+      h1 {
+        text-align: center;
+        color: #000;
+      }
 
+      .text-content h3 {
+        text-align: center;
+        margin-bottom: 10px;
+      }
 
-@media screen and (max-width: 600px) {
-    .box {
-        flex-basis: calc(100% - 40px);
-    }
-}
+      .course-details {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        margin: 20px;
+      }
+
+      /* Em telas médias (entre 601px e 1023px), 2 colunas */
+      @media screen and (min-width: 601px) and (max-width: 1023px) {
+        main {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Em telas maiores (a partir de 1024px), 3 colunas */
+      @media screen and (min-width: 1024px) {
+        main {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
 
     </style>
 </head>
 <body>
 
-<h1>Expansão Digital</h1>
+<header>
+  <h1>Expansão Digital</h1>
+</header>
 
-<div class="container">
-    <!-- Card for Lógica de Programação e Desenvolvimento Web com IA -->
+<main>
+    <!-- Card 1 -->
     <div class="box">
-        <div class="image-placeholder" style="background-image: url('https://metodoprogramar.com.br/wp-content/uploads/2023/06/Como-iniciar-no-Desenvolvimento-Web-O-que-voce-deve-estudar.png');"></div>
+        <img src="https://metodoprogramar.com.br/wp-content/uploads/2023/06/Como-iniciar-no-Desenvolvimento-Web-O-que-voce-deve-estudar.png" alt="Imagem representando desenvolvimento web">
         <div class="text-content">
             <h3>Lógica de Programação e Desenvolvimento Web com IA</h3>
             <ol>
@@ -133,10 +146,9 @@ h3 {
         </div>
     </div>
 
-
-
+    <!-- Card 2 -->
     <div class="box">
-        <div class="image-placeholder" style="background-image: url('https://t.ctcdn.com.br/MAiDMlUqZs4khOpe-vzzsaE1tTk=/640x360/smart/i743626.jpeg');"></div>
+        <img src="https://t.ctcdn.com.br/MAiDMlUqZs4khOpe-vzzsaE1tTk=/640x360/smart/i743626.jpeg" alt="Imagem representando Inteligência Artificial">
         <div class="text-content">
             <h3>Inteligência Artificial</h3>
             <ol>
@@ -149,239 +161,228 @@ h3 {
                 </li>
                 <li>Plataformas e Ferramentas para IAs Generativas
                     <ul>
-                        <li>Apresentação das principais plataformas e ferramentas disponíveis para criar IAs Generativas</li>
-                        <li>Demonstração de como acessar e usar essas plataformas</li>
+                        <li>Principais plataformas e ferramentas disponíveis</li>
+                        <li>Demonstração de uso</li>
                     </ul>
                 </li>
                 <li>Aplicações de IAs Generativas em Diferentes Domínios
                     <ul>
-                        <li>Criação de imagens com IAs Generativas</li>
-                        <li>Geração de texto e linguagem natural</li>
-                        <li>Produção de música e áudio com IAs Generativas</li>
-                        <li>Outros exemplos de aplicação em áreas como design, moda, entretenimento, etc.</li>
+                        <li>Criação de imagens</li>
+                        <li>Geração de texto</li>
+                        <li>Produção de música e áudio</li>
                     </ul>
                 </li>
                 <li>Ética e Considerações Sociais
                     <ul>
-                        <li>Discussão sobre os impactos éticos e sociais do uso de IAs Generativas</li>
-                        <li>Questões de autoria, direitos autorais e plágio</li>
-                        <li>Possíveis usos maliciosos e precauções a serem consideradas</li>
+                        <li>Impactos éticos e sociais</li>
+                        <li>Questões de autoria, direitos autorais</li>
+                        <li>Possíveis usos maliciosos</li>
                     </ul>
                 </li>
                 <li>Aplicações Práticas
                     <ul>
-                        <li>Desenvolvimento de um projeto prático onde os alunos utilizam uma plataforma de IA Generativa para criar conteúdo</li>
-                        <li>Orientação e suporte durante o desenvolvimento do projeto</li>
-                        <li>Apresentação dos projetos ao final do curso</li>
+                        <li>Desenvolvimento de um projeto prático</li>
+                        <li>Orientação e suporte</li>
+                        <li>Apresentação dos projetos</li>
                     </ul>
                 </li>
                 <li>Discussão e Futuro da IA Generativa
                     <ul>
-                        <li>Reflexão sobre o potencial futuro das IAs Generativas</li>
-                        <li>Tendências emergentes e áreas de pesquisa em IA Generativa</li>
-                        <li>Recursos e comunidades para continuar aprendendo e explorando o tema</li>
+                        <li>Potencial futuro</li>
+                        <li>Tendências emergentes</li>
+                        <li>Recursos e comunidades para aprendizado contínuo</li>
                     </ul>
                 </li>
             </ol>
         </div>
     </div>
 
-
-
-
-    <!-- Card for Cloud Computing -->
+    <!-- Card 3 -->
     <div class="box">
-        <div class="image-placeholder" style="background-image: url('https://www.coopersystem.com.br/wp-content/uploads/2023/09/6-mitos-e-verdades-sobre-cloud-computing.jpg');"></div>
+        <img src="https://www.coopersystem.com.br/wp-content/uploads/2023/09/6-mitos-e-verdades-sobre-cloud-computing.jpg" alt="Imagem representando Cloud Computing">
         <div class="text-content">
             <h3>Cloud Computing</h3>
             <ol>
                 <li>Introdução ao Cloud Computing
                     <ul>
-                        <li>Conceitos básicos de Cloud Computing</li>
-                        <li>Modelos de serviço: IaaS, PaaS, SaaS</li>
-                        <li>Vantagens e desvantagens da computação em nuvem</li>
-                        <li>Principais provedores de serviços de nuvem</li>
+                        <li>Conceitos básicos</li>
+                        <li>Modelos de serviço (IaaS, PaaS, SaaS)</li>
+                        <li>Vantagens e desvantagens</li>
+                        <li>Principais provedores</li>
                     </ul>
                 </li>
                 <li>Plataformas de Cloud Existentes
                     <ul>
-                        <li>Visão geral dos principais provedores de nuvem (ex: AWS, Microsoft Azure, Google Cloud Platform)</li>
-                        <li>Comparação entre plataformas: características, preços, serviços oferecidos</li>
-                        <li>Demonstração prática de como acessar e navegar nas plataformas de nuvem mais populares</li>
+                        <li>AWS, Azure, Google Cloud</li>
+                        <li>Comparação entre plataformas</li>
+                        <li>Acesso e navegação</li>
                     </ul>
                 </li>
                 <li>Processamento de Dados em Nuvem
                     <ul>
-                        <li>Introdução ao processamento de dados em nuvem</li>
-                        <li>Configuração e uso básico de ferramentas de computação em nuvem</li>
-                        <li>Escalabilidade e elasticidade em ambientes de computação em nuvem</li>
+                        <li>Conceitos básicos</li>
+                        <li>Configuração e uso</li>
+                        <li>Escalabilidade e elasticidade</li>
                     </ul>
                 </li>
                 <li>Segurança e Governança na Nuvem
                     <ul>
-                        <li>Desafios de segurança em ambientes de nuvem</li>
-                        <li>Controles de acesso e gerenciamento de identidade na nuvem</li>
+                        <li>Desafios de segurança</li>
+                        <li>Controles de acesso e identidade</li>
                     </ul>
                 </li>
                 <li>Aplicações Práticas
                     <ul>
-                        <li>Estudos de caso de empresas que utilizam a nuvem para diferentes propósitos (armazenamento, processamento, análise de dados, etc.)</li>
-                        <li>Exemplos práticos de como integrar serviços de nuvem em projetos reais</li>
-                        <li>Discussão sobre tendências futuras e possíveis avanços em Cloud Computing</li>
+                        <li>Estudos de caso</li>
+                        <li>Integração em projetos reais</li>
+                        <li>Tendências futuras</li>
                     </ul>
                 </li>
             </ol>
         </div>
     </div>
 
-
-    
-
+    <!-- Card 4 -->
     <div class="box">
-        <div class="image-placeholder" style="background-image: url('https://www.interop.com.br/wp-content/uploads/2019/06/IOT.jpg');"></div>
+        <img src="https://www.interop.com.br/wp-content/uploads/2019/06/IOT.jpg" alt="Imagem representando Internet das Coisas (IoT)">
         <div class="text-content">
             <h3>Internet das Coisas (IoT)</h3>
             <ol>
-                <li>Introdução à Internet das Coisas (IoT)
+                <li>Introdução à IoT
                     <ul>
-                        <li>Definição e conceitos básicos de IoT</li>
-                        <li>História e evolução da IoT</li>
-                        <li>Aplicações e casos de uso da IoT em diferentes setores</li>
-                        <li>Tendências e perspectivas futuras da IoT</li>
+                        <li>Definições e conceitos</li>
+                        <li>História e evolução</li>
+                        <li>Aplicações em diversos setores</li>
+                        <li>Tendências futuras</li>
                     </ul>
                 </li>
                 <li>Componentes e Arquitetura da IoT
                     <ul>
-                        <li>Visão geral dos componentes típicos de um sistema IoT: sensores, dispositivos, redes de comunicação, plataformas de IoT</li>
-                        <li>Arquitetura de sistemas IoT: camadas de aplicação, rede e dispositivo</li>
-                        <li>Padrões e protocolos de comunicação na IoT</li>
+                        <li>Sensores, dispositivos, redes</li>
+                        <li>Arquitetura de camadas</li>
+                        <li>Protocolos de comunicação</li>
                     </ul>
                 </li>
                 <li>Dispositivos e Plataformas de IoT
                     <ul>
-                        <li>Tipos de dispositivos IoT: sensores, atuadores, dispositivos embarcados</li>
-                        <li>Visão geral das principais plataformas de IoT: AWS IoT, Azure IoT, Google Cloud IoT, etc.</li>
-                        <li>Demonstração prática de como configurar e usar uma plataforma de IoT</li>
+                        <li>Tipos de dispositivos</li>
+                        <li>Plataformas (AWS IoT, Azure IoT, etc.)</li>
+                        <li>Configuração prática</li>
                     </ul>
                 </li>
                 <li>Desenvolvimento de Projetos IoT
                     <ul>
-                        <li>Metodologias de desenvolvimento de projetos IoT</li>
-                        <li>Casos de uso e exemplos práticos de projetos IoT</li>
-                        <li>Ferramentas e recursos para prototipagem rápida e desenvolvimento de projetos IoT</li>
+                        <li>Metodologias de desenvolvimento</li>
+                        <li>Casos de uso</li>
+                        <li>Ferramentas e recursos</li>
                     </ul>
                 </li>
                 <li>Segurança na IoT
                     <ul>
-                        <li>Desafios de segurança na IoT: privacidade, integridade, autenticidade</li>
-                        <li>Técnicas de proteção e mitigação de ameaças na IoT</li>
-                        <li>Boas práticas de segurança para dispositivos e sistemas IoT</li>
+                        <li>Desafios de segurança</li>
+                        <li>Proteção de dados</li>
+                        <li>Boas práticas</li>
                     </ul>
                 </li>
                 <li>Aplicações Práticas e Estudos de Caso
                     <ul>
-                        <li>Estudos de caso de implementações de sucesso de IoT em diferentes setores (saúde, agricultura, indústria, cidades inteligentes, etc.)</li>
-                        <li>Exemplos práticos de aplicação de IoT em projetos reais</li>
-                        <li>Discussão sobre os benefícios, desafios e impactos da IoT em diversas áreas</li>
+                        <li>Estudos de caso em diversos setores</li>
+                        <li>Exemplos práticos</li>
+                        <li>Benefícios, desafios e impactos</li>
                     </ul>
                 </li>
             </ol>
         </div>
     </div>
 
-
-
-
-    
+    <!-- Card 5 -->
     <div class="box">
-        <div class="image-placeholder" style="background-image: url('https://infoportugal.pt/wp-content/uploads/2023/03/Realidade_Virtual_e_Aumentada_By_InfoPortugal.png');"></div>
+        <img src="https://infoportugal.pt/wp-content/uploads/2023/03/Realidade_Virtual_e_Aumentada_By_InfoPortugal.png" alt="Imagem representando Realidade Virtual e Realidade Aumentada">
         <div class="text-content">
             <h3>Realidade Virtual e Realidade Aumentada</h3>
             <ol>
-                <li>Introdução à Realidade Virtual e Realidade Aumentada
+                <li>Introdução à RV e RA
                     <ul>
-                        <li>Definição de Realidade Virtual e Realidade Aumentada</li>
+                        <li>Definições</li>
                         <li>Diferenças entre RV e RA</li>
-                        <li>História e evolução das tecnologias de RV e RA</li>
-                        <li>Aplicações e casos de uso em diferentes setores</li>
+                        <li>História e evolução</li>
+                        <li>Aplicações em diferentes setores</li>
                     </ul>
                 </li>
-                <li>Tipos de Dispositivos de RV e RA
+                <li>Tipos de Dispositivos
                     <ul>
-                        <li>Visão geral dos dispositivos de RV: óculos de RV, headsets, luvas de realidade virtual, entre outros</li>
-                        <li>Dispositivos de RA: smartphones, óculos de RA, dispositivos de projeção</li>
-                        <li>Comparação entre diferentes dispositivos: características, funcionalidades, preços</li>
+                        <li>Óculos de RV, headsets</li>
+                        <li>Smartphones, óculos de RA</li>
+                        <li>Comparação de dispositivos</li>
                     </ul>
                 </li>
-                <li>Aplicações Práticas de RV e RA
+                <li>Aplicações Práticas
                     <ul>
-                        <li>Aplicações de RV em jogos, simulações, treinamento, entretenimento, entre outros</li>
-                        <li>Casos de uso de RA em publicidade, educação, design, turismo, saúde, etc.</li>
-                        <li>Exemplos práticos de experiências de RV e RA</li>
+                        <li>RV em jogos, simulações, treinamento</li>
+                        <li>RA em publicidade, educação, turismo</li>
+                        <li>Exemplos práticos</li>
                     </ul>
                 </li>
-                <li>Segurança e Privacidade em RV e RA
+                <li>Segurança e Privacidade
                     <ul>
-                        <li>Desafios de segurança em ambientes de RV e RA</li>
-                        <li>Privacidade e proteção de dados pessoais em aplicações de RV e RA</li>
-                        <li>Regulamentações e padrões de segurança para dispositivos de RV e RA</li>
+                        <li>Desafios de segurança</li>
+                        <li>Privacidade e proteção de dados</li>
+                        <li>Padrões de segurança</li>
                     </ul>
                 </li>
                 <li>Futuro da RV e RA
                     <ul>
-                        <li>Tendências emergentes e áreas de crescimento para tecnologias de RV e RA</li>
-                        <li>Desafios a serem superados e oportunidades futuras</li>
-                        <li>Aplicações inovadoras e potencial disruptivo da RV e RA</li>
+                        <li>Tendências emergentes</li>
+                        <li>Desafios e oportunidades</li>
+                        <li>Potencial disruptivo</li>
                     </ul>
                 </li>
             </ol>
         </div>
     </div>
 
-
-
+    <!-- Card 6 -->
     <div class="box">
-        <div class="image-placeholder" style="background-image: url('https://s4.static.brasilescola.uol.com.br/monografias/2020/08/moedas.jpg');"></div>
+        <img src="https://s4.static.brasilescola.uol.com.br/monografias/2020/08/moedas.jpg" alt="Imagem representando moedas virtuais e criptomoedas">
         <div class="text-content">
             <h3>Nova Economia, Moedas Virtuais e Criptomoedas</h3>
             <ol>
                 <li>Introdução à Nova Economia e Moedas Virtuais
                     <ul>
-                        <li>Definição de Nova Economia e seu impacto nas transações financeiras</li>
-                        <li>História e evolução das moedas virtuais e criptomoedas</li>
-                        <li>Vantagens e desafios da adoção de moedas virtuais</li>
+                        <li>Definição de Nova Economia</li>
+                        <li>História das moedas virtuais</li>
+                        <li>Vantagens e desafios</li>
                     </ul>
                 </li>
                 <li>Conceitos Fundamentais de Criptomoedas
                     <ul>
-                        <li>O que são criptomoedas e como funcionam</li>
-                        <li>Tecnologia Blockchain: princípios básicos e características</li>
-                        <li>Tipos de criptomoedas: Bitcoin, Ethereum, Ripple, etc.</li>
+                        <li>Funcionamento das criptomoedas</li>
+                        <li>Blockchain</li>
+                        <li>Tipos de criptomoedas</li>
                     </ul>
                 </li>
-                <li>Uso e Aplicações de Criptomoedas
+                <li>Uso e Aplicações
                     <ul>
-                        <li>Transações e pagamentos com criptomoedas</li>
-                        <li>Casos de uso de blockchain além das criptomoedas: contratos inteligentes, descentralização, entre outros</li>
+                        <li>Transações e pagamentos</li>
+                        <li>Contratos inteligentes</li>
                     </ul>
                 </li>
-                <li>Plataformas e Ferramentas de Criptomoedas
+                <li>Plataformas e Ferramentas
                     <ul>
-                        <li>Carteiras de criptomoedas: tipos, características e segurança</li>
+                        <li>Carteiras de criptomoedas</li>
                     </ul>
                 </li>
                 <li>Segurança em Criptomoedas
                     <ul>
-                        <li>Princípios de segurança em criptomoedas: chaves privadas, carteiras seguras, autenticação de dois fatores</li>
-                        <li>Riscos e ameaças comuns em transações com criptomoedas: phishing, malware, fraudes</li>
-                        <li>Melhores práticas para proteger seus ativos digitais</li>
+                        <li>Chaves privadas</li>
+                        <li>Riscos e ameaças</li>
+                        <li>Melhores práticas</li>
                     </ul>
                 </li>
             </ol>
         </div>
     </div>
-</div>
-</div>
+</main>
 
 </body>
 </html>
