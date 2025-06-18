@@ -1,388 +1,392 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expansão Digital</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(to right, #ADD8E6, #FFFFFF, #ADD8E6);
-        margin: 0;
-        padding: 0;
-        line-height: 1.5;
-        color: #000;
-      }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expansão Digital (Layout Aprimorado)</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #34495e;
+      --accent-color: #00bcd4;
+      --highlight-color: #00a1b4;
+      --text-color-light: #f0f0f0;
+      --text-color-dark: #333;
+      --card-background: #ffffff;
+      --border-radius: 12px;
+      --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      --font-family: 'Poppins', sans-serif;
+    }
 
-      header {
+    @keyframes fadeInSlideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    body {
+      font-family: var(--font-family);
+      background: #f4f7f6;
+      color: var(--text-color-dark);
+      margin: 0;
+      line-height: 1.6;
+    }
+    
+    body.modal-open { overflow: hidden; }
+
+    header {
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      color: var(--text-color-light);
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+      font-weight: 700;
+    }
+
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background-color: var(--card-background);
+      color: var(--primary-color);
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      width: 320px;
+      padding: 30px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid #e0e0e0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      animation: fadeInSlideUp 0.5s ease-out forwards;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--box-shadow);
+    }
+    
+    .card .icon {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 20px;
+      color: var(--accent-color);
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.5em;
+      font-weight: 600;
+    }
+
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-color: rgba(44, 62, 80, 0.85);
+      backdrop-filter: blur(5px);
+      display: flex; justify-content: center; align-items: center;
+      z-index: 1000; opacity: 0; visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .modal-overlay.visible { opacity: 1; visibility: visible; }
+
+    .modal-box {
+      background-color: #f9f9f9;
+      color: var(--text-color-dark);
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      width: 90%; max-width: 850px; max-height: 90vh;
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+    }
+    .modal-overlay.visible .modal-box { transform: scale(1); }
+
+    #close-modal-btn {
+      position: absolute; top: 15px; right: 20px;
+      background: none; border: none; font-size: 2.2em;
+      line-height: 1; color: #aaa; cursor: pointer;
+      transition: color 0.2s, transform 0.2s; z-index: 10;
+    }
+    #close-modal-btn:hover { color: var(--primary-color); transform: rotate(90deg); }
+    
+    .modal-sidebar {
+      width: 40%;
+      background-color: #fff;
+      padding: 40px;
+      display: flex; flex-direction: column; justify-content: center;
+      text-align: center;
+    }
+    .modal-main-content {
+      width: 60%;
+      padding: 40px;
+      overflow-y: auto;
+    }
+
+    #modal-image {
+      width: 100%; height: auto;
+      max-height: 250px; object-fit: contain;
+      border-radius: var(--border-radius);
+    }
+    
+    #modal-title {
+      margin: 20px 0 0 0;
+      font-size: 2.2em; font-weight: 700;
+      color: var(--primary-color);
+    }
+    
+    .modal-tabs {
+      display: flex;
+      flex-wrap: wrap; /* Permite que as abas quebrem a linha se necessário */
+      border-bottom: 2px solid #ddd;
+      margin-bottom: 20px;
+    }
+    .tab-link {
+      padding: 10px 15px; /* Padding ajustado para mais abas */
+      cursor: pointer;
+      background: none; border: none;
+      font-family: var(--font-family); font-size: 0.95em; font-weight: 600;
+      color: #777;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .tab-link:hover { color: var(--highlight-color); }
+    .tab-link.active {
+      color: var(--primary-color);
+      border-bottom-color: var(--highlight-color);
+    }
+    
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeInSlideUp 0.4s; }
+
+    #modal-content ul {
+      padding-left: 20px; list-style-type: none; margin-top: 0;
+    }
+    #modal-content ul li::before {
+      content: "\2714";
+      color: var(--highlight-color);
+      font-weight: bold; display: inline-block;
+      width: 1.5em; margin-left: -1.5em;
+    }
+    #modal-content ul li { margin-bottom: 10px; }
+    
+    footer {
+        background: var(--secondary-color);
+        color: var(--text-color-light);
         text-align: center;
-        padding: 40px 20px;
-      }
-
-      header h1 {
-        margin: 0;
-        font-size: 2em;
-        color: #000;
-      }
-
-      main {
-        max-width: 1200px;
-        margin: 20px auto;
         padding: 20px;
-        display: grid;
-        grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
-        grid-gap: 20px; /* Espaçamento entre os cards */
-      }
+        margin-top: auto;
+    }
 
-      .box {
-        border: 1px solid #ccc;
-        background-color: #fff;
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-        transition: box-shadow 0.3s ease;
-        border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: left;
-      }
-
-      .box:hover {
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      }
-
-      .box img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 8px 8px 0 0;
-        margin-bottom: 20px;
-      }
-
-      .text-content {
-        width: 100%;
-      }
-
-      h1 {
-        text-align: center;
-        color: #000;
-      }
-
-      .text-content h3 {
-        text-align: center;
-        margin-bottom: 10px;
-      }
-
-      .course-details {
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        margin: 20px;
-      }
-
-      /* Em telas médias (entre 601px e 1023px), 2 colunas */
-      @media screen and (min-width: 601px) and (max-width: 1023px) {
-        main {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      /* Em telas maiores (a partir de 1024px), 3 colunas */
-      @media screen and (min-width: 1024px) {
-        main {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-
-    </style>
-</head>
+    @media (max-width: 800px) {
+      .modal-box { flex-direction: column; max-height: 85vh; }
+      .modal-sidebar, .modal-main-content { width: 100%; padding: 25px; box-sizing: border-box; }
+      .modal-main-content { max-height: 50vh; }
+    }
+    @media (max-width: 700px) { .card { width: 100%; } }
+  </style>
+  </head>
 <body>
 
-<header>
-  <h1>Expansão Digital</h1>
-</header>
+  <header><h1>Expansão Digital</h1></header>
 
-<main>
-    <!-- Card 1 -->
-    <div class="box">
-        <img src="https://metodoprogramar.com.br/wp-content/uploads/2023/06/Como-iniciar-no-Desenvolvimento-Web-O-que-voce-deve-estudar.png" alt="Imagem representando desenvolvimento web">
-        <div class="text-content">
-            <h3>Lógica de Programação e Desenvolvimento Web com IA</h3>
-            <ol>
-                <li>Lógica de Programação
-                    <ul>
-                        <li>Conceitos Fundamentais</li>
-                        <li>Importância da lógica na construção de algoritmos</li>
-                        <li>Algoritmos e sua representação</li>
-                        <li>Variáveis e tipos de dados</li>
-                        <li>Estruturas de Controle de Fluxo</li>
-                        <li>Estruturas de Dados Básicas</li>
-                        <li>Funções e Modularização</li>
-                        <li>Algoritmos de Ordenação e Busca</li>
-                    </ul>
-                </li>
-                <li>Desenvolvimento Web
-                    <ul>
-                        <li>Conceitos Fundamentais</li>
-                        <li>Introdução ao HTML5</li>
-                        <li>Estrutura básica de um documento HTML</li>
-                        <li>Uso de tags HTML para marcação de conteúdo</li>
-                        <li>Links, imagens e listas em HTML</li>
-                        <li>Estilização com CSS</li>
-                        <li>Responsividade e Layouts Flexíveis</li>
-                        <li>Interação com JavaScript</li>
-                    </ul>
-                </li>
-                <li>Desenvolvimento Web com IA
-                    <ul>
-                        <li>Engenharia de Prompt</li>
-                        <li>Conceitos básicos de IA e Machine Learning</li>
-                        <li>Otimização de Websites com IA</li>
-                        <li>Aplicações e Projetos Práticos</li>
-                    </ul>
-                </li>
-            </ol>
+  <main>
+    <div class="card" data-content-id="exp-content-1" data-image="https://blog.gokursos.com/wp-content/uploads/2023/05/programming-background-with-person-working-with-codes-computer-1200x800.jpg" style="animation-delay: 0ms;">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.146 4.854a.5.5 0 0 1 0 .708L4.707 8l2.439 2.439a.5.5 0 0 1-.708.708l-2.75-2.75a.5.5 0 0 1 0-.708l2.75-2.75a.5.5 0 0 1 .708 0m1.708 0a.5.5 0 0 0 0 .708L11.293 8l-2.439 2.439a.5.5 0 0 0 .708.708l2.75-2.75a.5.5 0 0 0 0-.708l-2.75-2.75a.5.5 0 0 0-.708 0z"/></svg>
+      <h2>Desenvolvimento Web com IA</h2>
+    </div>
+    <div class="card" data-content-id="exp-content-2" data-image="https://t.ctcdn.com.br/MAiDMlUqZs4khOpe-vzzsaE1tTk=/640x360/smart/i743626.jpeg" style="animation-delay: 100ms;">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10h14V4zM2 5h12v9H2z"/></svg>
+      <h2>Inteligência Artificial</h2>
+    </div>
+    <div class="card" data-content-id="exp-content-3" data-image="https://www.coopersystem.com.br/wp-content/uploads/2023/09/6-mitos-e-verdades-sobre-cloud-computing.jpg" style="animation-delay: 200ms;">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383z"/></svg>
+      <h2>Cloud Computing</h2>
+    </div>
+    <div class="card" data-content-id="exp-content-4" data-image="https://www.interop.com.br/wp-content/uploads/2019/06/IOT.jpg" style="animation-delay: 300ms;">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M4 1.5H2.5V3h-2v1h2V5.5H4v-1h2V3h-2zM2.5 7V5.5h-2v1h2V8H4V7zM8 9.5v-2h1v2zM6.5 9.5v-2h1v2zM5 9.5v-2h1v2zM3.5 9.5v-2h1v2zM2 9.5v-2h1v2zm12-4a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5m-3-1a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5m-3-1a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5"/><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/></svg>
+      <h2>Internet das Coisas (IoT)</h2>
+    </div>
+    <div class="card" data-content-id="exp-content-5" data-image="https://infoportugal.pt/wp-content/uploads/2023/03/Realidade_Virtual_e_Aumentada_By_InfoPortugal.png" style="animation-delay: 400ms;">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M7.5 4.734a4.49 4.49 0 0 1 4.196-2.412c.118.01.233.024.348.04.117.016.232.036.345.061.114.025.226.054.336.086.11.032.218.068.322.108.105.04.208.084.309.132l.012.006.012.006a4.49 4.49 0 0 1 2.412 4.196c-.01.118-.024.233-.04.348-.016.117-.036.232-.061.345-.025.114-.054.226-.086.336-.032.11-.068.218-.108.322-.04.105-.084.208-.132.309l-.006.012-.006.012a4.49 4.49 0 0 1-4.196 2.412 4.49 4.49 0 0 1-4.196-2.412l-.006-.012-.006-.012A4.49 4.49 0 0 1 .39 8.266l.006-.012.006-.012A4.49 4.49 0 0 1 2.814.39a4.49 4.49 0 0 1 4.196 2.412l.006.012.006.012A4.49 4.49 0 0 1 8.266.39l.012.006.012.006z"/></svg>
+      <h2>Realidade Virtual e Aumentada</h2>
+    </div>
+    <div class="card" data-content-id="exp-content-6" data-image="https://s4.static.brasilescola.uol.com.br/monografias/2020/08/moedas.jpg" style="animation-delay: 500ms;">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M11 6.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5m-3.5 0a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5m0-1.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5m1.5 0a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5m0 3a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5m-1.5 0a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5m-2 0a.5.5 0 0 1-.5.5h-.5a.5.5 0 0 1 0-1h.5a.5.5 0 0 1 .5.5m.5 1.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5m1.5 0a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5"/></svg>
+      <h2>Nova Economia e Criptomoedas</h2>
+    </div>
+  </main>
+
+  <footer id="page-footer"></footer>
+
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <button id="close-modal-btn" aria-label="Fechar modal">&times;</button>
+      <div class="modal-sidebar">
+        <img id="modal-image" src="" alt="">
+        <h2 id="modal-title"></h2>
+      </div>
+      <div class="modal-main-content">
+        <div id="modal-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="hidden-content" style="display:none;">
+    <div id="exp-content-1">
+        <div class="modal-tab-container">
+            <nav class="modal-tabs">
+                <button class="tab-link active" data-tab="exp-tab-1-1">Lógica de Programação</button>
+                <button class="tab-link" data-tab="exp-tab-1-2">Desenvolvimento Web</button>
+                <button class="tab-link" data-tab="exp-tab-1-3">Web com IA</button>
+            </nav>
+            <div id="exp-tab-1-1" class="tab-content active"><ul><li>Conceitos Fundamentais</li><li>Importância da lógica na construção de algoritmos</li><li>Algoritmos e sua representação</li><li>Variáveis e tipos de dados</li><li>Estruturas de Controle de Fluxo</li><li>Estruturas de Dados Básicas</li><li>Funções e Modularização</li><li>Algoritmos de Ordenação e Busca</li></ul></div>
+            <div id="exp-tab-1-2" class="tab-content"><ul><li>Conceitos Fundamentais</li><li>Introdução ao HTML5</li><li>Estrutura básica de um documento HTML</li><li>Uso de tags HTML para marcação de conteúdo</li><li>Links, imagens e listas em HTML</li><li>Estilização com CSS</li><li>Responsividade e Layouts Flexíveis</li><li>Interação com JavaScript</li></ul></div>
+            <div id="exp-tab-1-3" class="tab-content"><ul><li>Engenharia de Prompt</li><li>Conceitos básicos de IA e Machine Learning</li><li>Otimização de Websites com IA</li><li>Aplicações e Projetos Práticos</li></ul></div>
         </div>
     </div>
-
-    <!-- Card 2 -->
-    <div class="box">
-        <img src="https://t.ctcdn.com.br/MAiDMlUqZs4khOpe-vzzsaE1tTk=/640x360/smart/i743626.jpeg" alt="Imagem representando Inteligência Artificial">
-        <div class="text-content">
-            <h3>Inteligência Artificial</h3>
-            <ol>
-                <li>Introdução à Inteligência Artificial e IAs Generativas
-                    <ul>
-                        <li>Definição de IA e suas aplicações</li>
-                        <li>Visão geral das IAs Generativas</li>
-                        <li>Exemplos de aplicações de IAs Generativas na criação de conteúdo</li>
-                    </ul>
-                </li>
-                <li>Plataformas e Ferramentas para IAs Generativas
-                    <ul>
-                        <li>Principais plataformas e ferramentas disponíveis</li>
-                        <li>Demonstração de uso</li>
-                    </ul>
-                </li>
-                <li>Aplicações de IAs Generativas em Diferentes Domínios
-                    <ul>
-                        <li>Criação de imagens</li>
-                        <li>Geração de texto</li>
-                        <li>Produção de música e áudio</li>
-                    </ul>
-                </li>
-                <li>Ética e Considerações Sociais
-                    <ul>
-                        <li>Impactos éticos e sociais</li>
-                        <li>Questões de autoria, direitos autorais</li>
-                        <li>Possíveis usos maliciosos</li>
-                    </ul>
-                </li>
-                <li>Aplicações Práticas
-                    <ul>
-                        <li>Desenvolvimento de um projeto prático</li>
-                        <li>Orientação e suporte</li>
-                        <li>Apresentação dos projetos</li>
-                    </ul>
-                </li>
-                <li>Discussão e Futuro da IA Generativa
-                    <ul>
-                        <li>Potencial futuro</li>
-                        <li>Tendências emergentes</li>
-                        <li>Recursos e comunidades para aprendizado contínuo</li>
-                    </ul>
-                </li>
-            </ol>
+    <div id="exp-content-2">
+        <div class="modal-tab-container">
+            <nav class="modal-tabs">
+                <button class="tab-link active" data-tab="exp-tab-2-1">Introdução</button>
+                <button class="tab-link" data-tab="exp-tab-2-2">Ferramentas</button>
+                <button class="tab-link" data-tab="exp-tab-2-3">Aplicações</button>
+                <button class="tab-link" data-tab="exp-tab-2-4">Ética</button>
+                <button class="tab-link" data-tab="exp-tab-2-5">Futuro</button>
+            </nav>
+            <div id="exp-tab-2-1" class="tab-content active"><ul><li>Definição de IA e suas aplicações</li><li>Visão geral das IAs Generativas</li><li>Exemplos de aplicações de IAs Generativas na criação de conteúdo</li></ul></div>
+            <div id="exp-tab-2-2" class="tab-content"><ul><li>Principais plataformas e ferramentas disponíveis</li><li>Demonstração de uso</li></ul></div>
+            <div id="exp-tab-2-3" class="tab-content"><ul><li>Criação de imagens</li><li>Geração de texto</li><li>Produção de música e áudio</li><li>Desenvolvimento de um projeto prático</li><li>Orientação e suporte</li><li>Apresentação dos projetos</li></ul></div>
+            <div id="exp-tab-2-4" class="tab-content"><ul><li>Impactos éticos e sociais</li><li>Questões de autoria, direitos autorais</li><li>Possíveis usos maliciosos</li></ul></div>
+            <div id="exp-tab-2-5" class="tab-content"><ul><li>Potencial futuro</li><li>Tendências emergentes</li><li>Recursos e comunidades para aprendizado contínuo</li></ul></div>
         </div>
     </div>
-
-    <!-- Card 3 -->
-    <div class="box">
-        <img src="https://www.coopersystem.com.br/wp-content/uploads/2023/09/6-mitos-e-verdades-sobre-cloud-computing.jpg" alt="Imagem representando Cloud Computing">
-        <div class="text-content">
-            <h3>Cloud Computing</h3>
-            <ol>
-                <li>Introdução ao Cloud Computing
-                    <ul>
-                        <li>Conceitos básicos</li>
-                        <li>Modelos de serviço (IaaS, PaaS, SaaS)</li>
-                        <li>Vantagens e desvantagens</li>
-                        <li>Principais provedores</li>
-                    </ul>
-                </li>
-                <li>Plataformas de Cloud Existentes
-                    <ul>
-                        <li>AWS, Azure, Google Cloud</li>
-                        <li>Comparação entre plataformas</li>
-                        <li>Acesso e navegação</li>
-                    </ul>
-                </li>
-                <li>Processamento de Dados em Nuvem
-                    <ul>
-                        <li>Conceitos básicos</li>
-                        <li>Configuração e uso</li>
-                        <li>Escalabilidade e elasticidade</li>
-                    </ul>
-                </li>
-                <li>Segurança e Governança na Nuvem
-                    <ul>
-                        <li>Desafios de segurança</li>
-                        <li>Controles de acesso e identidade</li>
-                    </ul>
-                </li>
-                <li>Aplicações Práticas
-                    <ul>
-                        <li>Estudos de caso</li>
-                        <li>Integração em projetos reais</li>
-                        <li>Tendências futuras</li>
-                    </ul>
-                </li>
-            </ol>
+    <div id="exp-content-3">
+        <div class="modal-tab-container">
+            <nav class="modal-tabs">
+                <button class="tab-link active" data-tab="exp-tab-3-1">Introdução</button>
+                <button class="tab-link" data-tab="exp-tab-3-2">Plataformas</button>
+                <button class="tab-link" data-tab="exp-tab-3-3">Processamento</button>
+                <button class="tab-link" data-tab="exp-tab-3-4">Segurança</button>
+            </nav>
+            <div id="exp-tab-3-1" class="tab-content active"><ul><li>Conceitos básicos</li><li>Modelos de serviço (IaaS, PaaS, SaaS)</li><li>Vantagens e desvantagens</li><li>Principais provedores</li></ul></div>
+            <div id="exp-tab-3-2" class="tab-content"><ul><li>AWS, Azure, Google Cloud</li><li>Comparação entre plataformas</li><li>Acesso e navegação</li></ul></div>
+            <div id="exp-tab-3-3" class="tab-content"><ul><li>Conceitos básicos</li><li>Configuração e uso</li><li>Escalabilidade e elasticidade</li></ul></div>
+            <div id="exp-tab-3-4" class="tab-content"><ul><li>Desafios de segurança</li><li>Controles de acesso e identidade</li><li>Estudos de caso</li><li>Integração em projetos reais</li><li>Tendências futuras</li></ul></div>
         </div>
     </div>
-
-    <!-- Card 4 -->
-    <div class="box">
-        <img src="https://www.interop.com.br/wp-content/uploads/2019/06/IOT.jpg" alt="Imagem representando Internet das Coisas (IoT)">
-        <div class="text-content">
-            <h3>Internet das Coisas (IoT)</h3>
-            <ol>
-                <li>Introdução à IoT
-                    <ul>
-                        <li>Definições e conceitos</li>
-                        <li>História e evolução</li>
-                        <li>Aplicações em diversos setores</li>
-                        <li>Tendências futuras</li>
-                    </ul>
-                </li>
-                <li>Componentes e Arquitetura da IoT
-                    <ul>
-                        <li>Sensores, dispositivos, redes</li>
-                        <li>Arquitetura de camadas</li>
-                        <li>Protocolos de comunicação</li>
-                    </ul>
-                </li>
-                <li>Dispositivos e Plataformas de IoT
-                    <ul>
-                        <li>Tipos de dispositivos</li>
-                        <li>Plataformas (AWS IoT, Azure IoT, etc.)</li>
-                        <li>Configuração prática</li>
-                    </ul>
-                </li>
-                <li>Desenvolvimento de Projetos IoT
-                    <ul>
-                        <li>Metodologias de desenvolvimento</li>
-                        <li>Casos de uso</li>
-                        <li>Ferramentas e recursos</li>
-                    </ul>
-                </li>
-                <li>Segurança na IoT
-                    <ul>
-                        <li>Desafios de segurança</li>
-                        <li>Proteção de dados</li>
-                        <li>Boas práticas</li>
-                    </ul>
-                </li>
-                <li>Aplicações Práticas e Estudos de Caso
-                    <ul>
-                        <li>Estudos de caso em diversos setores</li>
-                        <li>Exemplos práticos</li>
-                        <li>Benefícios, desafios e impactos</li>
-                    </ul>
-                </li>
-            </ol>
+    <div id="exp-content-4">
+        <div class="modal-tab-container">
+            <nav class="modal-tabs">
+                <button class="tab-link active" data-tab="exp-tab-4-1">Introdução</button>
+                <button class="tab-link" data-tab="exp-tab-4-2">Arquitetura</button>
+                <button class="tab-link" data-tab="exp-tab-4-3">Projetos</button>
+                <button class="tab-link" data-tab="exp-tab-4-4">Segurança</button>
+            </nav>
+            <div id="exp-tab-4-1" class="tab-content active"><ul><li>Definições e conceitos</li><li>História e evolução</li><li>Aplicações em diversos setores</li><li>Tendências futuras</li></ul></div>
+            <div id="exp-tab-4-2" class="tab-content"><ul><li>Sensores, dispositivos, redes</li><li>Arquitetura de camadas</li><li>Protocolos de comunicação</li><li>Tipos de dispositivos</li><li>Plataformas (AWS IoT, Azure IoT, etc.)</li><li>Configuração prática</li></ul></div>
+            <div id="exp-tab-4-3" class="tab-content"><ul><li>Metodologias de desenvolvimento</li><li>Casos de uso</li><li>Ferramentas e recursos</li><li>Estudos de caso em diversos setores</li><li>Exemplos práticos</li><li>Benefícios, desafios e impactos</li></ul></div>
+            <div id="exp-tab-4-4" class="tab-content"><ul><li>Desafios de segurança</li><li>Proteção de dados</li><li>Boas práticas</li></ul></div>
         </div>
     </div>
-
-    <!-- Card 5 -->
-    <div class="box">
-        <img src="https://infoportugal.pt/wp-content/uploads/2023/03/Realidade_Virtual_e_Aumentada_By_InfoPortugal.png" alt="Imagem representando Realidade Virtual e Realidade Aumentada">
-        <div class="text-content">
-            <h3>Realidade Virtual e Realidade Aumentada</h3>
-            <ol>
-                <li>Introdução à RV e RA
-                    <ul>
-                        <li>Definições</li>
-                        <li>Diferenças entre RV e RA</li>
-                        <li>História e evolução</li>
-                        <li>Aplicações em diferentes setores</li>
-                    </ul>
-                </li>
-                <li>Tipos de Dispositivos
-                    <ul>
-                        <li>Óculos de RV, headsets</li>
-                        <li>Smartphones, óculos de RA</li>
-                        <li>Comparação de dispositivos</li>
-                    </ul>
-                </li>
-                <li>Aplicações Práticas
-                    <ul>
-                        <li>RV em jogos, simulações, treinamento</li>
-                        <li>RA em publicidade, educação, turismo</li>
-                        <li>Exemplos práticos</li>
-                    </ul>
-                </li>
-                <li>Segurança e Privacidade
-                    <ul>
-                        <li>Desafios de segurança</li>
-                        <li>Privacidade e proteção de dados</li>
-                        <li>Padrões de segurança</li>
-                    </ul>
-                </li>
-                <li>Futuro da RV e RA
-                    <ul>
-                        <li>Tendências emergentes</li>
-                        <li>Desafios e oportunidades</li>
-                        <li>Potencial disruptivo</li>
-                    </ul>
-                </li>
-            </ol>
+    <div id="exp-content-5">
+        <div class="modal-tab-container">
+            <nav class="modal-tabs">
+                <button class="tab-link active" data-tab="exp-tab-5-1">Introdução</button>
+                <button class="tab-link" data-tab="exp-tab-5-2">Dispositivos</button>
+                <button class="tab-link" data-tab="exp-tab-5-3">Aplicações</button>
+                <button class="tab-link" data-tab="exp-tab-5-4">Considerações</button>
+            </nav>
+            <div id="exp-tab-5-1" class="tab-content active"><ul><li>Definições</li><li>Diferenças entre RV e RA</li><li>História e evolução</li><li>Aplicações em diferentes setores</li></ul></div>
+            <div id="exp-tab-5-2" class="tab-content"><ul><li>Óculos de RV, headsets</li><li>Smartphones, óculos de RA</li><li>Comparação de dispositivos</li></ul></div>
+            <div id="exp-tab-5-3" class="tab-content"><ul><li>RV em jogos, simulações, treinamento</li><li>RA em publicidade, educação, turismo</li><li>Exemplos práticos</li></ul></div>
+            <div id="exp-tab-5-4" class="tab-content"><ul><li>Desafios de segurança</li><li>Privacidade e proteção de dados</li><li>Padrões de segurança</li><li>Tendências emergentes</li><li>Desafios e oportunidades</li><li>Potencial disruptivo</li></ul></div>
         </div>
     </div>
-
-    <!-- Card 6 -->
-    <div class="box">
-        <img src="https://s4.static.brasilescola.uol.com.br/monografias/2020/08/moedas.jpg" alt="Imagem representando moedas virtuais e criptomoedas">
-        <div class="text-content">
-            <h3>Nova Economia, Moedas Virtuais e Criptomoedas</h3>
-            <ol>
-                <li>Introdução à Nova Economia e Moedas Virtuais
-                    <ul>
-                        <li>Definição de Nova Economia</li>
-                        <li>História das moedas virtuais</li>
-                        <li>Vantagens e desafios</li>
-                    </ul>
-                </li>
-                <li>Conceitos Fundamentais de Criptomoedas
-                    <ul>
-                        <li>Funcionamento das criptomoedas</li>
-                        <li>Blockchain</li>
-                        <li>Tipos de criptomoedas</li>
-                    </ul>
-                </li>
-                <li>Uso e Aplicações
-                    <ul>
-                        <li>Transações e pagamentos</li>
-                        <li>Contratos inteligentes</li>
-                    </ul>
-                </li>
-                <li>Plataformas e Ferramentas
-                    <ul>
-                        <li>Carteiras de criptomoedas</li>
-                    </ul>
-                </li>
-                <li>Segurança em Criptomoedas
-                    <ul>
-                        <li>Chaves privadas</li>
-                        <li>Riscos e ameaças</li>
-                        <li>Melhores práticas</li>
-                    </ul>
-                </li>
-            </ol>
+    <div id="exp-content-6">
+        <div class="modal-tab-container">
+            <nav class="modal-tabs">
+                <button class="tab-link active" data-tab="exp-tab-6-1">Introdução</button>
+                <button class="tab-link" data-tab="exp-tab-6-2">Conceitos</button>
+                <button class="tab-link" data-tab="exp-tab-6-3">Uso e Segurança</button>
+            </nav>
+            <div id="exp-tab-6-1" class="tab-content active"><ul><li>Definição de Nova Economia</li><li>História das moedas virtuais</li><li>Vantagens e desafios</li></ul></div>
+            <div id="exp-tab-6-2" class="tab-content"><ul><li>Funcionamento das criptomoedas</li><li>Blockchain</li><li>Tipos de criptomoedas</li></ul></div>
+            <div id="exp-tab-6-3" class="tab-content"><ul><li>Transações e pagamentos</li><li>Contratos inteligentes</li><li>Carteiras de criptomoedas</li><li>Chaves privadas</li><li>Riscos e ameaças</li><li>Melhores práticas</li></ul></div>
         </div>
     </div>
-</main>
+  </div>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const modalOverlay = document.getElementById('modal-overlay');
+      const closeModalBtn = document.getElementById('close-modal-btn');
+      const cards = document.querySelectorAll('.card');
+      const modalTitle = document.getElementById('modal-title');
+      const modalImage = document.getElementById('modal-image');
+      const modalContent = document.getElementById('modal-content');
+      let lastFocusedElement;
+
+      const openModal = (card) => {
+        lastFocusedElement = document.activeElement;
+        const contentId = card.dataset.contentId;
+        modalTitle.textContent = card.querySelector('h2').textContent;
+        modalImage.src = card.dataset.image;
+        modalImage.alt = `Imagem para ${modalTitle.textContent}`;
+        modalContent.innerHTML = document.getElementById(contentId).innerHTML;
+        
+        document.body.classList.add('modal-open');
+        modalOverlay.classList.add('visible');
+        closeModalBtn.focus();
+        
+        setupTabLogic();
+      };
+      
+      const closeModal = () => {
+        document.body.classList.remove('modal-open');
+        modalOverlay.classList.remove('visible');
+        if (lastFocusedElement) lastFocusedElement.focus();
+      };
+
+      const setupTabLogic = () => {
+        const tabContainer = modalContent.querySelector('.modal-tab-container');
+        if (!tabContainer) return;
+
+        tabContainer.addEventListener('click', (e) => {
+          if (e.target.matches('.tab-link')) {
+            const tabId = e.target.dataset.tab;
+            
+            tabContainer.querySelectorAll('.tab-link').forEach(link => link.classList.remove('active'));
+            tabContainer.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            e.target.classList.add('active');
+            tabContainer.querySelector(`#${tabId}`).classList.add('active');
+          }
+        });
+      };
+      
+      cards.forEach(card => card.addEventListener('click', () => openModal(card)));
+      closeModalBtn.addEventListener('click', closeModal);
+      modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modalOverlay.classList.contains('visible')) closeModal(); });
+      
+      document.getElementById('page-footer').innerHTML = `<p>&copy; ${new Date().getFullYear()} Expansão Digital. Todos os direitos reservados.</p>`;
+    });
+  </script>
 </body>
 </html>
